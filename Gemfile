@@ -11,6 +11,8 @@ gem 'pg'
 gem 'awesome_rails_console'
 # Authentication devise security
 gem 'devise'
+# Chartsjs is a development tool for simple charts with canvas tag
+gem 'chartjs-ror'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
