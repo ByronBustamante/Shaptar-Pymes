@@ -1,0 +1,26 @@
+<title>Recuperar Contraseña</title>
+
+<!-- Formulario Iniciar Secion -->
+
+<div class="devise sombra">
+<%= image_tag "logo-shaptar-mini.png", alt: "Shaptar Pymes" %>
+<br><br>
+<b>¿Ha olvido su contraseña?</b> Envíenos su correo electrónico, le enviaremos las instrucciones necesarias con las que podrá recuperar el acceso a su cuenta.
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+<br>
+
+  <div class="field">
+    <%= f.email_field :email, placeholder: "Correo Electrónico", :class => 'box large', autofocus: true %>
+  </div>
+
+<br><br>
+
+  <div class="actions">
+    <%= f.submit "Recuperar Contraseña", :class => 'button' %>
+  </div>
+<% end %>
+
+</div>

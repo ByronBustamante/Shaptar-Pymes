@@ -1,0 +1,103 @@
+<title>Editar Información</title>
+
+<!-- Formulario Iniciar Secion -->
+
+<div class="devise sombra">
+<%= image_tag "logo-shaptar-mini.png", alt: "Shaptar Pymes" %>
+
+<br><br>
+<h2>Editar mi Información</h2>
+<br><br>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+
+
+
+
+  <div class="field">
+    <%= f.label :Correo_Electrónico %><br />
+    <%= f.email_field :email, placeholder: "Correo Electrónico", :class => 'box large', autofocus: true %>
+  </div>
+
+
+
+
+
+  <div class="field"><br />
+    <%= f.label :Representante_Legal %><br />
+    <%= f.text_field :legal_representative, :class => 'box large' %>
+  </div>
+  <div class="field"><br />
+    <%= f.label :Nombre_de_la_Empresa %><br />
+    <%= f.text_field :company_name, :class => 'box large' %>
+  </div>
+  <div class="field"><br />
+    <%= f.label :Razón_Social %><br />
+    <%= f.text_field :business_name, :class => 'box large' %>
+  </div>
+  <div class="field"><br />
+    <%= f.label :Nit %><br />
+    <%= f.text_field :nit, :class => 'box large' %>
+  </div>
+  <div class="field"><br />
+    <%= f.label :Teléfono_Local %><br />
+    <%= f.text_field :telephone, :class => 'box large' %>
+  </div>
+  <div class="field"><br />
+    <%= f.label :Telefono_Movíl %><br />
+    <%= f.text_field :mobile, :class => 'box large' %>
+  </div>
+  <div class="field"><br />
+    <%= f.label :Dirección_de_la_Empresa %><br />
+    <%= f.text_field :company_address, :class => 'box large' %>
+  </div>
+
+
+
+
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+
+
+<br>
+
+  <div class="field">
+    <%= f.label :Cambiar_Contraseña %><br />
+      <% if @minimum_password_length %>
+        <em><%= @minimum_password_length %> caracteres como minimo</em>
+      <% end %>
+    <%= f.password_field :password, :class => 'box large', autocomplete: "off" %>
+  </div>
+<br>
+  <div class="field">
+    <%= f.label :Confirme_su_nueva_contraseña %><br />
+    <%= f.password_field :password_confirmation, :class => 'box large', autocomplete: "off" %>
+  </div>
+
+
+
+<br><br><br>
+
+
+
+  <div class="field">
+    <i>(Para guardar los cambios necesitamos estar seguros que es el administrador, por favor <b> ingrese su contraseña y proceda a guardar los cambios</b>)</i><br />
+    <%= f.password_field :current_password, :class => 'box large', autocomplete: "off" %>
+  </div>
+<br><br>
+  <div class="actions">
+    <%= f.submit "Guardar Cambios", :class => 'button' %>
+  </div>
+<% end %>
+
+
+
+<br><br>
+
+<h3>Cancelar mi Cuenta</h3>
+<p>Si desea cancelar su cuenta toda su información se eliminara de nuestro sistema y no podrá recuperarla. <br /><br /> <%= button_to "Cancelar mi Cuenta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => 'button2' %></p>
+</div>

@@ -1,0 +1,2 @@
+class OtherServicesController < ApplicationController
+end

@@ -1,1 +1,91 @@
+<title>Shaptar Pymes</title>
+<% if user_signed_in? %>
+<div class="bloque-negativo sombra">
+
+<div class="editar-perfil">
+  <div class="editar-informacion"><%= link_to image_tag("informacion.svg"), edit_user_registration_path %></div>
+  <div class="editar-foto"><%= link_to image_tag("foto.svg"), edit_user_registration_path %></div>
+</div>
+
+<div class="perfil-logo"></div>
+
+<div class="perfil-informacion">
+<h2>Información General</h2>
+<p><b>Representante Legal:</b><br> <%= current_user.legal_representative %></p>
+<p><b>Nombre de la Empresa:</b><br> <%= current_user.company_name %></p>
+<p><b>Razón Social:</b><br> <%= current_user.business_name %></p>
+<p><b>Nit:</b><br> <%= current_user.nit %></p>
+</div>
+
+<div class="perfil-contacto">
+<h2>Información de Contacto</h2>
+<p><b>Teléfono:</b><br> <%= current_user.telephone %> - <%= current_user.mobile %></p>
+<p><b>Correo Electrónico:</b><br> <%= current_user.email %></p>
+<p><b>Dirección de la Empresa:</b><br> <%= current_user.company_address %></p>
+</div>
+
+<div class="perfil-grafica">
+  <canvas id="myChart" width="1140" height="360"></canvas>
+  <script>
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"],
+    datasets: [
+      {
+          label: "Compras",
+          fill: false,
+          lineTension: 0.1,
+          backgroundColor: "#e23737",
+          borderColor: "#e23737",
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "#e23737",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 8,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "#e23737",
+          pointHoverBorderColor: "#e23737",
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          data: [0, 300, 20, 191, 76, 14, 130, 40],
+          spanGaps: false,
+      },{
+            label: "Ventas",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "#1A5EA1",
+            borderColor: "#1A5EA1",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "#1A5EA1",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 8,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "#1A5EA1",
+            pointHoverBorderColor: "#1A5EA1",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [100, 30, 60, 11, 76, 11, 30, 40, 60, 200, 10, 12],
+            spanGaps: false,
+        }
+    ]
+      },
+  });
+  </script>
+</div>
+
+</div>
+
+<% else %>
+
 <div class="bloque-negativo sombra"></div>
+
+<% end %>

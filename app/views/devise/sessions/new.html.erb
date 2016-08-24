@@ -1,0 +1,37 @@
+<title>Iniciar Sesión</title>
+
+<!-- Formulario Iniciar Secion -->
+
+<div class="devise sombra">
+<%= image_tag "logo-shaptar-mini.png", alt: "Shaptar Pymes" %>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.email_field :email, placeholder: "Correo Electrónico", :class => 'box large', autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password, placeholder: "Contraseña", :class => 'box large' %>
+  </div>
+
+<br>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :No_cerrar_sesión %>
+    </div>
+  <% end -%>
+
+<br>
+
+<div class="actions">
+  <%= f.submit "Iniciar Sesión", :class => 'button'  %>
+</div>
+<% end %>
+
+<br>
+
+<%= render "devise/shared/links" %>
+
+</div>

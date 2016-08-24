@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</head>
+<body>
+
+<!-- Barra de menú -->
+
+<nav>
+<div class="container-nav">
+  <div class="logo-nav"><%= image_tag "logo-shaptar-pymes.png", alt: "Shaptar Pymes" %></div>
+  <div class="menu-nav">
+    <ul>
+      <li class="button-nav">
+        <%= link_to "Regresar a Inicio", {controller: "/welcome", action: "index"}, class: "link-blanco li-submenu" %>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+<!-- Cuerpo -->
+
+<div class="wrap"></div>
+<%= yield %>
+
+<!-- Pie de Página -->
+
+<%= link_to "+", {controller: "/other_services", action: "index"}, class: "boton-mas" %>
+
+</body>
+</html>

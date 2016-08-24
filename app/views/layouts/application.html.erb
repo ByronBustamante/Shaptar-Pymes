@@ -1,17 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" xml:lang="es">
 <head>
-  <title>ShaptarPymes</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<!-- Barra de menú -->
 
-  <!-- Cuerpo -->
-  <div class="wrap"></div>
-  <%= yield %>
+<% if user_signed_in? %>
+
+<nav>
+<div class="container-nav">
+<div class="logo-nav"><%= image_tag "logo-shaptar-pymes.png", alt: "Shaptar Pymes" %></div>
+
+<div class="menu-nav">
+  <ul>
+    <li class="button-nav"><%= link_to "Byron Bustamante", {controller: "welcome", action: "index"}, class: "link-blanco li-submenu" %></li>
+    <li><a class="link-blanco li-centro">|</a></li>
+    <li class="button-nav"><%= link_to "Notificaciones", {controller: "welcome", action: "index"}, class: "link-blanco li-centro" %></li>
+    <li><a class="link-blanco li-centro">|</a></li>
+
+    <li><a class="link-blanco li-centro pointer">Servicios</a>
+      <div class="dropdownContain">
+      <div class="dropOut">
+      <div class="triangle"></div>
+        <ul>
+          <li><%= link_to "Libro Ventas", {controller: "welcome", action: "index"}, class: "link-blanco li-submenu" %></li>
+          <li><%= link_to "Libro Compras", {controller: "welcome", action: "index"}, class: "link-blanco li-submenu" %></li>
+          <li><%= link_to "Estado SAT", {controller: "welcome", action: "index"}, class: "link-blanco li-submenu" %></li>
+          <li><%= link_to "Otros Servicios", {controller: "other_services", action: "index"}, class: "link-blanco li-submenu" %></li>
+        </ul>
+      </div>
+      </div>
+    </li>
+
+    <li><a class="link-blanco li-centro">|</a></li>
+    <li class="button-nav link-blanco li-centro"><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "link-blanco" %></li>
+  </ul>
+</div>
+
+</div>
+</nav>
+
+<% else %>
+
+<nav>
+<div class="container-nav">
+<div class="logo-nav"><%= image_tag "logo-shaptar-pymes.png", alt: "Shaptar Pymes" %></div>
+  <div class="menu-nav">
+    <ul>
+      <li class="button-nav"><%= link_to "Iniciar Sesión", new_user_session_path, class: "link-blanco li-centro" %></li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+<% end %>
+
+<!-- Cuerpo -->
+
+<div class="wrap"></div>
+<%= yield %>
+
+<!-- Pie de Página -->
+
+<footer>
+  <div class="container-footer">
+    <div class="derecho-de-autor">Copyright © 2016-2017</div>
+    <div class="menu-footer">
+      <ul>
+        <li><%= link_to "Ayuda", {controller: "welcome", action: "help"}, class: "link-negro" %></li>
+        <li>·</li>
+        <li><%= link_to "Información", {controller: "welcome", action: "information"}, class: "link-negro" %></li>
+        <li>·</li>
+        <li><%= link_to "Preguntas", {controller: "welcome", action: "faq"}, class: "link-negro" %></li>
+        <li>·</li>
+        <li><%= link_to "Contacto", {controller: "welcome", action: "contact"}, class: "link-negro" %></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<%= link_to "+", {controller: "other_services", action: "index"}, class: "boton-mas" %>
 
 </body>
 </html>
